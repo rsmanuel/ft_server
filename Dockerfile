@@ -26,5 +26,16 @@ RUN mv phpMyAdmin-5.1.0-english phpmyadmin
 #replace default phpMyAdmin config and rename it
 COPY srcs/config.inc.php /var/www/html/phpmyadmin
 
+#wordpress
+#install wordpress
+RUN wget https://wordpress.org/latest.tar.gz
+#extract tar file and remove .tar
+RUN tar -xf latest.tar.gz && rm -rf latest.tar.gz
+#replace wp config file
+COPY srcs/wp-config.php /var/www/html/wordpress
+
+RUN chown -R www-data:www-data *
+RUN chmod -R 755 /var/www/*
+
 COPY	srcs/*.sh ./
 CMD		bash commands.sh
