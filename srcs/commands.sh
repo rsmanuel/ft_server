@@ -13,3 +13,5 @@ echo "FLUSH PRIVILEGES;" | mysql -u root --skip-password
 echo "update mysql.user set plugin='mysql_native_password' where user='root';"| mysql -u root --skip-password
 
 service nginx start
+
+bash
